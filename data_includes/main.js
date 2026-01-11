@@ -1,45 +1,54 @@
 PennController.ResetPrefix(null);
 
-// 1. 定义实验流程：知情同意书 -> 指导语 -> 实验主体
+// 1. Define Sequence: Consent -> Instructions -> Main Experiment
 Sequence("Consent", "Instructions", randomize("StroopTrial"));
 
-// 2. 知情同意书：图宾根大学标准模版样式
+// 2. Informed Consent Trial (Uses your bilingual consent.html)
 newTrial("Consent",
     newHtml("consent_form", "consent.html")
         .center()
         .print()
     ,
-    newButton("continue", "我已阅读并同意 (Accept & Continue)")
+    newButton("continue", "Ich stimme zu / I agree & Continue")
         .center()
         .print()
         .wait()
 );
 
-// 3. 简单的指导语
+// 3. Bilingual Instructions
 newTrial("Instructions",
-    newText("instr", "欢迎参加图宾根大学的心理学实验。<br>如果单词颜色与含义匹配，按 <b>F</b>；不匹配请按 <b>J</b>。")
+    newText("instr_de", "Willkommen zum Experiment der Universität Tübingen.<br>Drücken Sie <b>F</b>, wenn die Farbe mit der Bedeutung übereinstimmt; sonst <b>J</b>.")
         .center()
         .print()
     ,
-    newButton("start", "点击开始实验")
+    newText("spacer", "<br>")
+        .center()
+        .print()
+    ,
+    newText("instr_en", "Welcome to the University of Tübingen experiment.<br>Press <b>F</b> if the color matches the meaning; otherwise press <b>J</b>.")
+        .center()
+        .italic()
+        .print()
+    ,
+    newButton("start", "Start / Beginn")
         .center()
         .print()
         .wait()
 );
 
-// 4. Stroop 实验主体
+// 4. Stroop Experiment Main Body
 Template("StroopTable.csv", row =>
     newTrial("StroopTrial",
         newVar("correct").global()
         ,
-        // 固定注视点
+        // Fixation Cross
         newText("cross", "+").css("font-size", "2em").center().print()
         ,
         newTimer("pre-trial", 500).start().wait()
         ,
         getText("cross").remove()
         ,
-        // 目标词汇
+        // Target Stimulus
         newText("target", row.Word)
             .color(row.FontColor)
             .center()
@@ -50,8 +59,8 @@ Template("StroopTable.csv", row =>
         ,
         newTimer("allotted time", 2000).start()
         ,
-        // 反应按钮（美化版）
-        newScale("answer", "Match (F)", "Mismatch (J)")
+        // Bilingual Response Options
+        newScale("answer", "Match / Gleich (F)", "Mismatch / Anders (J)")
             .button()
             .keys("F", "J")
             .center()
@@ -61,16 +70,16 @@ Template("StroopTable.csv", row =>
         ,
         getTimer("allotted time").wait()
         ,
-        // 反馈逻辑
+        // Feedback Logic
         getScale("answer")
-            .test.selected(row.CorrectKey == 'F' ? "Match (F)" : "Mismatch (J)")
+            .test.selected(row.CorrectKey == 'F' ? "Match / Gleich (F)" : "Mismatch / Anders (J)")
             .success(
                 getVar("correct").set(true),
-                newText("correct_msg", "正确").color("green").center().print()
+                newText("correct_msg", "Richtig / Correct").color("green").center().print()
             )
             .failure(
                 getVar("correct").set(false),
-                newText("wrong_msg", "错误").color("red").center().print()
+                newText("wrong_msg", "Falsch / Incorrect").color("red").center().print()
             )
         ,
         newTimer("post-trial", 800).start().wait()
