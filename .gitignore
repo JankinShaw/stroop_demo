@@ -1,0 +1,146 @@
+.sass-cache/
+_site/
+.jekyll-metadata
+.jekyll-cache
+__pycache__/
+
+# --- Python 编译输出 ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- C 扩展编译文件 ---
+*.so
+
+# --- 虚拟环境 ---
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# --- IDE / 编辑器文件 ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# --- 测试与覆盖率 ---
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# --- 构建输出与打包 ---
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Django / Flask 等框架 ---
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+instance/
+.webassets-cache
+
+# --- Scrapy ---
+.scrapy
+
+# --- Sphinx 文档 ---
+docs/_build/
+doc/_build/
+
+# --- Jupyter Notebook ---
+.ipynb_checkpoints
+jupyter_notebook_config.json
+
+# --- PyInstaller 相关文件 ---
+# PyInstaller often stores build artifacts in this folder
+*.manifest
+*.spec
+
+# --- mypy / pyre / pytype ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# --- Pyre type checker ---
+.pyre/
+
+# --- profiling / debugging ---
+.prof
+*.pstats
+*.log
+
+# --- Environment variables ---
+.envrc
+*.env
+*.ini
+*.local
+.env.*
+.envrc
+
+# --- Mac / Windows 系统文件 ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- VS Code, JetBrains 等项目配置 ---
+.vscode/
+.idea/
+*.iml
+
+# --- Docker ---
+*.pid
+*.pid.lock
+docker-compose.override.yml
+.env.docker
+
+# --- Poetry / pipenv / Hatch ---
+poetry.lock
+Pipfile.lock
+.pdm.toml
+__pypackages__/
+
+# --- Temporary files ---
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+
+# --- Cache folders ---
+.cache/
+__pycache__/
+.pytest_cache/
+pip-wheel-metadata/

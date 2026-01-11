@@ -1,0 +1,22 @@
+/* 让整个实验容器居中 */
+.PennController {
+    justify-content: center !important;
+}
+
+/* 美化 Scale 按钮 */
+.PennController-answer {
+    gap: 50px;
+}
+
+.PennController-answer label {
+    padding: 15px 30px !important;
+    border: 2px solid #a51e37 !important; /* 图宾根红 */
+    border-radius: 8px !important;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.PennController-answer label:hover {
+    background-color: #fcebed !important;
+}
